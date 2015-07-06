@@ -2,15 +2,18 @@
 
 /**
  * @ngdoc overview
- * @name carlosApp
+ * @name App
  * @description
- * # carlosApp
+ * # App
  *
  * Main module of the application.
  */
 
+var serverURL = 'http://localhost:1337/';
+
+
 angular
-  .module('carlosApp', [
+  .module('app', [
     'ngAnimate',
     'ngAria',
     'ngCookies',
@@ -18,19 +21,59 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.router',
+    'app.home',
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+  .config(function ($routeProvider,$urlRouterProvider) {
+
+    $urlRouterProvider.otherwise( '/home' );
+  })
+  .controller( 'AppCtrl', function AppCtrl ( $scope, $location ) {
+    $scope.Menu = [];
+     $scope.Menu = [];
+  
+  $scope.Menu = [
+   {
+    "name": "Dashboard",
+    "route": "dashboard",
+    "id": "1",
+    "active": true,
+    "icon": "fa fa-pie-chart"
+  },
+  {
+    "name": "Reportes",
+    "route": "report",
+    "id": "1",
+    "active": true,
+    "icon": "fa fa-bars"
+  },
+  {
+    "name": "Usuarios",
+    "route": "config",
+    "id": "1",
+    "active": true,
+    "icon": "fa fa-users",
+    "SubMenu": [{
+        "name": "Usuarios",
+        "route": "config",
+        "id": "1",
+        "active": true,
+        "icon": "fa fa-users"
+      },{
+        "name": "Roles",
+        "route": "config",
+        "id": "1",
+        "active": true,
+        "icon": "fa fa-users"
+      },{
+        "name": "Reportes vs Roles",
+        "route": "config",
+        "id": "1",
+        "active": true,
+        "icon": "fa fa-users"
+      }]
+
+  }];
   });
+ 

@@ -9,6 +9,7 @@
 
 module.exports = function (grunt) {
 
+
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
@@ -17,7 +18,7 @@ module.exports = function (grunt) {
 
   // Configurable paths for the application
   var appConfig = {
-    app: require('./bower.json').appPath || 'app',
+    app:   'app',
     dist: 'dist'
   };
 
@@ -58,6 +59,8 @@ module.exports = function (grunt) {
         files: [
           '<%= yeoman.app %>/{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
+          '<%= yeoman.app %>/scripts/modules/{,*/}*.html',
+          '<%= yeoman.app %>/scripts/modules/{,*/}*.js',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }

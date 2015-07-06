@@ -9,16 +9,71 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="carlosApp">
+  <body ng-app="app" ng-controller="AppCtrl">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+
+    <nav class="navbar navbar-default" role="navigation">
+  <!-- El logotipo y el icono que despliega el menú se agrupan
+       para mostrarlos mejor en los dispositivos móviles -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse"
+            data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Desplegar navegación</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#">App</a>
+  </div>
+ 
+  <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+       otro elemento que se pueda ocultar al minimizar la barra -->
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+    <ul class="nav navbar-nav  navbar-left">
+       <li class="dropdown" ng-repeat="row in Menu"  >
+      <a  ui-sref="{{row.route}}" class="dropdown-toggle" data-toggle="dropdown" >
+      <i class="{{row.icon}}"> </i>
+         {{row.name}} <b ng-if="row.SubMenu" class="caret"></b>
+      </a>
+        <ul  class="dropdown-menu" >
+          <li  ng-repeat="row in row.SubMenu" ><a href="#">  
+              <i class="{{row.icon}}"> </i> {{row.name}} </a>
+                <ul  class="dropdown-menu" >
+                     <li><a href="#"><i class="fa fa-sign-out"></i> Salir</a></li>
+        </ul> 
+                </ul>
+          </li>
+        </ul>
+
+      </li> 
+
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+     
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <i class="fa fa-user"></i> Carlos Marcano  <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#"><i class="fa fa-gear"></i>  Perfil</a></li>
+          <li class="divider"></li>
+          <li><a href="#"><i class="fa fa-sign-out"></i> Salir</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
 
     <!-- Add your site or application content here -->
     <div class="header">
@@ -33,41 +88,73 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">carlos</a>
+            <a class="navbar-brand" href="#/">App</a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
+              <li class="active"><a ui-sref="table" > <i class="fa fa-home"> </i> Home</a></li>
             </ul>
+
+            <ul class="nav navbar-nav">
+              <li  ui-sref-active="active" class="menu-item "  ng-class="{dropdown: true}" ng-repeat="row in Menu" >
+                <a href ui-sref="{{row.route}}">
+                  <i class="{{row.icon}}"> </i>
+                  {{row.name}}
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="menu-item dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> Sub Menu</a>
+                    <ul class="dropdown-menu">
+                      <li class="menu-item "><a href="#"> Items A</a></li>
+                      <li class="menu-item "><a href="#">Items B</a></li>
+                      <li class="menu-item dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Mas</a>
+                        <ul class="dropdown-menu"><li><a href="#"> Carlos</a></li><li><a href="#">Marcano</a></li></ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+
+
+
           </div>
         </div>
       </div>
     </div>
 
+
     <div class="container">
-    <div ng-view=""></div>
+       <div class="container" ui-view="main"></div>
     </div>
 
     <div class="footer">
       <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+        <p><span class="fa fa-gears"></span> Modificar</p>
       </div>
     </div>
+<hr>
 
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  <script type="text/ng-template" id="SubMenu.html">
 
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
+          <li class="dropdown">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          SubMenu #1 <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+          <li><a href="#">Acción #1</a></li>
+          </ul>s
+          </li>
+    </script>
+
+
+    <script type="text/ng-template" id="Menu.html">
+        <li class="dropdown" ng-repeat="row in Menu"  >
+         <a  ui-sref="{{row.route}}" class="dropdown-toggle" data-toggle="dropdown" >
+         <i class="{{row.icon}}"> </i>
+        </li>
     </script>
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -84,13 +171,14 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
+
+        <script src="scripts/modules/home/home.js"></script>
         <!-- endbuild -->
 </body>
 </html>
