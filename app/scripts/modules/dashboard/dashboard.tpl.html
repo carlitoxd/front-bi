@@ -1,0 +1,29 @@
+<div class="row" ng-init="renderDash()" >
+
+
+
+
+      <div class="col-lg-4" ng-repeat="row  in dataDash" >
+                
+           <div class="panel panel-primary">
+          <div class="panel-heading">
+           <div class="btn-group">
+          
+             <button class="btn btn-primary btn-sm" type="button"> <i class="fa fa-table"></i></button>
+             <button ng-click="getChart('line')" class="btn btn-primary btn-sm" type="button"> <i class="fa fa-line-chart"></i></button>
+             <button ng-click="getChart('column')" class="btn btn-primary btn-sm" type="button"> <i class="fa fa-bar-chart"></i></button>
+             <button ng-click="getChart('pie')" class="btn btn-primary btn-sm" type="button"> <i class="fa fa-pie-chart"></i></button>
+
+              <button ng-click="addSeries()" class="btn btn-primary btn-sm" type="button"> <i class="fa fa-plus"></i></button>
+              <button ng-click="addPoints()" class="btn btn-primary btn-sm" type="button"> <i class="fa fa-pencil"></i></button>
+              <button ng-click="removeRandomSeries()" class="btn btn-primary btn-sm" type="button"> <i class="fa fa-info-circle"></i></button>
+              <button ng-click="swapChartType()" class="btn btn-primary btn-sm" type="button"> <i class="fa fa-gear"></i></button>
+               <button ng-click="loader($index)" class="btn btn-primary btn-sm" type="button"> <i class="fa fa-refresh"></i></button>
+         </div>
+          </div>
+          <div class="panel-body" style="height: 300px;overflow-y: auto;">
+             <highchart id="chart{{row.idChart}}" config="row.chart"></highchart>
+          </div>
+          </div>
+      </div>
+</div>
