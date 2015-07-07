@@ -21,7 +21,9 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <nav class="navbar navbar-default bg-prmary" role="navigation">
+<div id="app">
+  
+    <nav class="navbar navbar-default bg-prmary navbar-fixed-top" role="navigation" style="margin-bottom: 0px;border: 0px; border-radius: 0px; ">
     <!-- El logotipo y el icono que despliega el menú se agrupan
     para mostrarlos mejor en los dispositivos móviles -->
     <div class="navbar-header">
@@ -32,7 +34,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" ui-sref="home"><strong>App </strong></a>
+    <a class="navbar-brand" href="#menu-toggle"  id="menu-toggle "><strong>BI ->Brep 2.0 -> Lykos </strong></a>
   </div>
 
     <!-- Agrupar los enlaces de navegación, los formularios y cualquier
@@ -63,22 +65,93 @@
         <ul class="dropdown-menu">
           <li><a href="#"><i class="fa fa-gear"></i>  Perfil</a></li>
           <li class="divider"></li>
-          <li><a href="#"><i class="fa fa-sign-out"></i> Salir</a></li>
+          <li><a href="#"ng-click="showLogin=true" ><i class="fa fa-sign-out" ></i> Salir</a></li>
+          <li class="divider"></li>
+          <li><a href="#menu-toggle" id="menu-toggle"><i class="fa fa-bars"></i> Menu</a></li>
         </ul>
       </li>
     </ul>
   </div>
 </nav>
 
-<hr>
-  <div class="container col-xs-12">
-    <div class="col-xs-10" ui-view="main">
+
+  <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        ---
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="dashboard" ><i class="fa fa-bar-chart"></i> Wizard Dashboard</a>
+                </li>
+                 <li>
+                    <a ui-sref="objects"><i class="fa fa-database"></i> Catalogo de Consultas</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-pie-chart"></i> Graficas</a>
+                </li>
+                <li>
+                    <a ui-sref="table"><i class="fa fa-table"></i> Tabla Pivote</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-tachometer"></i> KPI's</a>
+                </li>
+                <li>
+                    <a ui-sref="managers"><i class="fa fa-database"></i> Centros de Datos</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-users"></i> Usuarios Conectados</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-gear"></i> Configuraciones </a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-exclamation-circle"></i> Reporte des Errores </a>
+                </li>
+
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+             
+              
+                <div class="row" style="margin-top:40px;" ui-view="main">
+                </div>
+              
+           <!--   <div class="footer">
+                <div class="container">
+                </div>
+              </div>-->
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
     </div>
-  </div>
-  <div class="footer">
-    <div class="container">
-    </div>
-  </div>
+    <!-- /#wrapper -->
+
+</div>
+
+<div id="fullscreen_bg" class="fullscreen_bg login-show-hide" style=" position: absolute;   left: 0px; top: 0px; z-index: 999999999; clear:both;" ng-show="showLogin" />
+
+<div class="container">
+
+  <form class="form-signin form-show-hide">
+    <h1 class="form-signin-heading text-muted"> </h1>
+    <input type="text" class="form-control" placeholder="Usuario" required="" autofocus="" ng-model="user.email">
+    <input type="password" class="form-control" placeholder="Password" required="" ng-model="user.email">
+    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="showLogin=false">
+       Acceptar
+    </button>
+  </form>
+
+</div>
 
 
 
@@ -117,9 +190,11 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <script src="bower_components/highcharts-ng/dist/highcharts-ng.js"></script>
-   
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="bower_components/highcharts/highcharts.js"></script>
+    <script src="bower_components/highcharts/highcharts-more.js"></script>
+    <script src="bower_components/highcharts/modules/exporting.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -141,6 +216,12 @@
     <script src="scripts/modules/reportTypes/reportTypes.js"></script> 
   <!-- endbuild -->
 
-        
+          <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
 </body>
 </html>

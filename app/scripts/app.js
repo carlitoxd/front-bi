@@ -107,6 +107,11 @@ angular
   })
   .controller( 'AppCtrl', function AppCtrl ( $scope ) {
 
+    $scope.user={};
+     $scope.showLogin=true; 
+    $scope.user.email='clmg1010@gmail.com';    
+    $scope.user.password='123456789'; 
+
       $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
     if ( angular.isDefined( toState.data.pageTitle ) ) {
       $scope.pageTitle = toState.data.pageTitle + ' | Lykos' ;
