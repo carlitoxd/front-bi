@@ -1,8 +1,8 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" ng-app="app" ng-controller="AppCtrl">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title ng-bind="pageTitle" > </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -16,51 +16,46 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="app" ng-controller="AppCtrl">
+  <body >
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <nav class="navbar navbar-default" role="navigation">
-  <!-- El logotipo y el icono que despliega el menú se agrupan
-       para mostrarlos mejor en los dispositivos móviles -->
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse"
-            data-target=".navbar-ex1-collapse">
+    <nav class="navbar navbar-default bg-prmary" role="navigation">
+    <!-- El logotipo y el icono que despliega el menú se agrupan
+    para mostrarlos mejor en los dispositivos móviles -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse"
+      data-target=".navbar-ex1-collapse">
       <span class="sr-only">Desplegar navegación</span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#">App</a>
+    <a class="navbar-brand" ui-sref="home"><strong>App </strong></a>
   </div>
- 
-  <!-- Agrupar los enlaces de navegación, los formularios y cualquier
-       otro elemento que se pueda ocultar al minimizar la barra -->
-  <div class="collapse navbar-collapse navbar-ex1-collapse">
 
-    <ul class="nav navbar-nav  navbar-left">
-       <li class="dropdown" ng-repeat="row in Menu"  >
-      <a  ui-sref="{{row.route}}" class="dropdown-toggle" data-toggle="dropdown" >
-      <i class="{{row.icon}}"> </i>
-         {{row.name}} <b ng-if="row.SubMenu" class="caret"></b>
-      </a>
-        <ul  class="dropdown-menu" >
-          <li  ng-repeat="row in row.SubMenu" ><a href="#">  
-              <i class="{{row.icon}}"> </i> {{row.name}} </a>
-                <ul  class="dropdown-menu" >
-                     <li><a href="#"><i class="fa fa-sign-out"></i> Salir</a></li>
-        </ul> 
-                </ul>
+    <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+    otro elemento que se pueda ocultar al minimizar la barra -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+      <ul class="nav navbar-nav  navbar-left">
+        <li class="dropdown" ng-repeat="row in Menu" ng-cloak ng-binding="row.name"  >
+          <a  ui-sref="{{row.route}}" class="dropdown-toggle" data-toggle="dropdown" >
+            <i class="{{row.icon}}"> </i>
+            {{row.name}} <b ng-if="row.SubMenu" class="caret"></b>
+          </a>
+          <ul  class="dropdown-menu" >
+            <li  ng-repeat="row in row.SubMenu" >
+              <a ui-sref="{{row.route}}" >  
+                <i class="{{row.icon}}"> </i>  {{row.name}} 
+              </a>
+            </ul>
           </li>
         </ul>
-
       </li> 
-
     </ul>
-
     <ul class="nav navbar-nav navbar-right">
-     
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
           <i class="fa fa-user"></i> Carlos Marcano  <b class="caret"></b>
@@ -75,66 +70,16 @@
   </div>
 </nav>
 
-    <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">App</a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a ui-sref="table" > <i class="fa fa-home"> </i> Home</a></li>
-            </ul>
-
-            <ul class="nav navbar-nav">
-              <li  ui-sref-active="active" class="menu-item "  ng-class="{dropdown: true}" ng-repeat="row in Menu" >
-                <a href ui-sref="{{row.route}}">
-                  <i class="{{row.icon}}"> </i>
-                  {{row.name}}
-                </a>
-                <ul class="dropdown-menu">
-                  <li class="menu-item dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> Sub Menu</a>
-                    <ul class="dropdown-menu">
-                      <li class="menu-item "><a href="#"> Items A</a></li>
-                      <li class="menu-item "><a href="#">Items B</a></li>
-                      <li class="menu-item dropdown dropdown-submenu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Mas</a>
-                        <ul class="dropdown-menu"><li><a href="#"> Carlos</a></li><li><a href="#">Marcano</a></li></ul>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-
-
-
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="container">
-       <div class="container" ui-view="main"></div>
-    </div>
-
-    <div class="footer">
-      <div class="container">
-        <p><span class="fa fa-gears"></span> Modificar</p>
-      </div>
-    </div>
 <hr>
+  <div class="container col-xs-12">
+    <div class="col-xs-10" ui-view="main">
+    </div>
+  </div>
+  <div class="footer">
+    <div class="container">
+    </div>
+  </div>
+
 
 
   <script type="text/ng-template" id="SubMenu.html">
@@ -172,13 +117,30 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+    <script src="bower_components/highcharts-ng/dist/highcharts-ng.js"></script>
+   
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/modules/home/home.js"></script>
+    <script src="scripts/modules/user/user.js"></script>
+    <script src="scripts/modules/config/config.js"></script>       
+    <script src="scripts/modules/dashboard/dashboard.js"></script>  
+    <script src="scripts/modules/managers/managers.js"></script>  
+    <script src="scripts/modules/report/report.js"></script>        
+    <script src="scripts/modules/reportObjects/reportObjects.js"></script>        
+    <script src="scripts/modules/reportsParams/reportsParams.js"></script>  
+    <script src="scripts/modules/table/table.js"></script>
+    <script src="scripts/modules/connections/connections.js"></script>      
+    <script src="scripts/modules/objects/objects.js"></script>   
+    <script src="scripts/modules/reportEngine/reportEngine.js"></script>  
+    <script src="scripts/modules/reportParamsObjects/reportParamsObjects.js"></script>  
+    <script src="scripts/modules/reportTypes/reportTypes.js"></script> 
+  <!-- endbuild -->
 
-        <script src="scripts/modules/home/home.js"></script>
-        <!-- endbuild -->
+        
 </body>
 </html>

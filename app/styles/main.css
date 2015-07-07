@@ -5,6 +5,55 @@
   padding: 0.2em 0;
 }
 
+
+
+@media (min-width: 768px)
+.navbar {
+  border-radius: 0px;
+}
+
+
+.navbar-default {
+  background-color: #357ebd;
+  border-color: #FFFFFF;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #FFFFFF;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  color: #555;
+  background-color: #FFFFFF;
+}
+
+.navbar-default .navbar-brand {
+  color: #FFFFFF;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  color: #555;
+  background-color: #FFFFFF;
+}
+
+@media (max-width: 767px)
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+  color: #FFF7F7;
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+  background-color: #FFF;
+}
+.navbar-default .navbar-toggle {
+  border-color: #FFF;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #1A1A1A;
+}
+
+
+
 body {
   padding: 0;
 }
