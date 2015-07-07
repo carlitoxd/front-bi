@@ -259,6 +259,11 @@
 }
 
 
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    background-color: transparent;
+    color: #000;
+}
+
 .navbar-default {
   background-color: #357ebd;
   border-color: #FFFFFF;

@@ -15,13 +15,14 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <link rel="stylesheet" href="styles/AdminLTE.min.css" />
   </head>
   <body >
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-<div id="app">
+<div id="app" ng-show="!showLogin">
   
     <nav class="navbar navbar-default bg-prmary navbar-fixed-top" role="navigation" style="margin-bottom: 0px;border: 0px; border-radius: 0px; ">
     <!-- El logotipo y el icono que despliega el menú se agrupan
@@ -34,7 +35,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#menu-toggle"  id="menu-toggle "><strong>BI ->Brep 2.0 -> Lykos </strong></a>
+    <a class="navbar-brand" href="#menu-toggle"  id="menu-toggle "><strong>BI -> Brep 2.0 -> Lykos </strong></a>
   </div>
 
     <!-- Agrupar los enlaces de navegación, los formularios y cualquier
@@ -60,7 +61,7 @@
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <i class="fa fa-user"></i> Carlos Marcano  <b class="caret"></b>
+          <i class="fa fa-user"></i> Usuario@clmg1010.com  <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
           <li><a href="#"><i class="fa fa-gear"></i>  Perfil</a></li>
@@ -109,6 +110,8 @@
                 <li>
                     <a href="#"><i class="fa fa-gear"></i> Configuraciones </a>
                 </li>
+           
+
                 <li>
                     <a href="#"><i class="fa fa-exclamation-circle"></i> Reporte des Errores </a>
                 </li>
@@ -145,8 +148,8 @@
   <form class="form-signin form-show-hide">
     <h1 class="form-signin-heading text-muted"> </h1>
     <input type="text" class="form-control" placeholder="Usuario" required="" autofocus="" ng-model="user.email">
-    <input type="password" class="form-control" placeholder="Password" required="" ng-model="user.email">
-    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="showLogin=false">
+    <input type="password" class="form-control" placeholder="Password" required="" ng-model="user.password">
+    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="showLogin=false ">
        Acceptar
     </button>
   </form>
