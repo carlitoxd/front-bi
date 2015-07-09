@@ -60,24 +60,7 @@ angular
         },
           //Retorna la lista de Objects registrados
        getObjects: function () {
-       /*   return {
-              getAll: getAll
-          }
-
-        function getAll () {
-            var defered = $q.defer();
-            var promise = defered.promise;
-
-            $http.get(serverURL + 'objects')
-                .success(function(data) {
-                    defered.resolve(data);
-                })
-                .error(function(err) {
-                    defered.reject(err)
-                });
-
-            return promise;*/
-        }
+ 
             return $http.get(serverURL + 'objects');
         },
         //Retorna un  Objeto
