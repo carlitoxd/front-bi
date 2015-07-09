@@ -110,7 +110,7 @@ angular
   .controller( 'AppCtrl', function AppCtrl ( $scope ) {
 
     $scope.user={};
-     $scope.showLogin=true; 
+     $scope.showLogin=false; 
     $scope.user.email='clmg1010@gmail.com';    
     $scope.user.password='123456789'; 
 

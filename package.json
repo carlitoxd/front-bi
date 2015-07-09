@@ -1,7 +1,9 @@
 {
   "name": "carlos",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "grunt-autoprefixer": "^3.0.3"
+  },
   "repository": {},
   "devDependencies": {
     "grunt": "^0.4.5",

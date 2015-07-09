@@ -11,8 +11,7 @@ angular.module( 'app.table', [
         link: function(scope, elem, attributes){
         
              scope.$watch('dataTable' ,function (value){
-               console.log("-----------------");
-                    var renderers = $.extend($.pivotUtilities.renderers );
+                    var renderers = $.extend($.pivotUtilities.renderers, $.pivotUtilities.gchart_renderers);
                     var conf=localStorageService.get('pivot');
                     if (conf==null){
                     conf={rows:[],cols:[]};
@@ -94,6 +93,22 @@ angular.module( 'app.table', [
     };
 
 
+  $scope.loadFile = function () {
+
+    $http({
+      url: serverURL + 'objects/loadFile',
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json; charset=UTF-8' }
+    }).success(function (data) {
+      $scope.dataTable=data.data;
+
+    }).error(function (err) {
+
+    });
+
+  };
+
+
   $scope.getFields = function () {
 
     $http({
@@ -102,9 +117,9 @@ angular.module( 'app.table', [
       headers: { 'Content-Type': 'application/json; charset=UTF-8' }
     }).success(function (data) {
       
-      for (var i = 0; i < data.fields.length; i++) {
-        $scope.fields.push(data.fields[i].title);
-      } 
+      // for (var i = 0; i < data.fields.length; i++) {
+      //   $scope.fields.push(data.fields[i].title);
+      // } 
      // console.log(data.data);
       $scope.dataTable=data.data;
 

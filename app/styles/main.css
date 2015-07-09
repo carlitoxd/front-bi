@@ -507,3 +507,6 @@ body {
     border-bottom: 0;
   }
 }
+/*  Top Scroll on Pivot Div */
+ #doublescroll { overflow: hidden; width:auto }
+ #doublescroll p { margin: 0; padding: 1em; white-space: nowrap; }
