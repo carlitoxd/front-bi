@@ -200,7 +200,7 @@
     left: 0;
     background-size: cover;
     background-position: 50% 50%;
-    background-image: url('http://10.65.50.52:9000/images/bg-agua.jpg');
+    background-image: url('../images/bg-agua.jpg');
     background-repeat:repeat;
   }
   .form-signin {
