@@ -1,5 +1,131 @@
 
 
+/*** Para las modales ***/
+
+.modal-content {
+    background-clip: padding-box;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 0;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    outline: 0 none;
+    position: relative;
+}
+
+.modal-header, .modal-footer {
+    background-color: #fff;
+    border: medium none;
+    border-radius: 0;
+}
+
+.modal-header {
+    background-color: #357ebd;
+    border: small none;
+    border-radius: 0;
+    color: #fff;
+}
+
+
+
+/* Breadcrumbs from http://bootsnipp.com/snippets/featured/triangle-breadcrumbs-arrows */
+.btn-breadcrumb .btn:not(:last-child):after {
+  content: " ";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 17px solid transparent;
+  border-bottom: 17px solid transparent;
+  border-left: 10px solid white;
+  position: absolute;
+  top: 50%;
+  margin-top: -17px;
+  left: 100%;
+  z-index: 3;
+}
+.btn-breadcrumb .btn:not(:last-child):before {
+  content: " ";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 17px solid transparent;
+  border-bottom: 17px solid transparent;
+  border-left: 10px solid rgb(173, 173, 173);
+  position: absolute;
+  top: 50%;
+  margin-top: -17px;
+  margin-left: 1px;
+  left: 100%;
+  z-index: 3;
+}
+
+.btn-breadcrumb .btn {
+  padding:6px 12px 6px 24px;
+}
+.btn-breadcrumb .btn:first-child {
+  padding:6px 6px 6px 10px;
+}
+.btn-breadcrumb .btn:last-child {
+  padding:6px 18px 6px 24px;
+}
+
+/** Default button **/
+.btn-breadcrumb .btn.btn-default:not(:last-child):after {
+  border-left: 10px solid #f4f4f4;
+}
+.btn-breadcrumb .btn.btn-default:not(:last-child):before {
+  border-left: 10px solid #ccc;
+}
+.btn-breadcrumb .btn.btn-default:hover:not(:last-child):after {
+  border-left: 10px solid #ebebeb;
+}
+.btn-breadcrumb .btn.btn-default:hover:not(:last-child):before {
+  border-left: 10px solid #adadad;
+}
+
+/* The responsive part */
+
+.btn-breadcrumb > * > div {
+    /* With less: .text-overflow(); */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;    
+}
+
+.btn-breadcrumb > *:nth-child(n+2) {
+  display:none;
+}
+
+/* === For phones =================================== */
+@media (max-width: 767px) {
+    .btn-breadcrumb > *:nth-last-child(-n+2) {
+        display:block;
+    } 
+    .btn-breadcrumb > * div {
+        max-width: 60px;
+    }
+}
+
+/* === For tablets ================================== */
+@media (min-width: 768px) and (max-width:991px) {
+    .btn-breadcrumb > *:nth-last-child(-n+4) {
+        display:block;
+    } 
+    .btn-breadcrumb > * div {
+        max-width: 100px;
+    }
+}
+
+/* === For desktops ================================== */
+@media (min-width: 992px) {
+    .btn-breadcrumb > *:nth-last-child(-n+6) {
+        display:block;
+    } 
+    .btn-breadcrumb > * div {
+        max-width: 170px;
+    }
+}
+
+
 
 
 /********************************************************/
@@ -74,7 +200,7 @@
     left: 0;
     background-size: cover;
     background-position: 50% 50%;
-    background-image: url('http://localhost:9000/images/bg-agua.jpg');
+    background-image: url('http://10.65.50.52:9000/images/bg-agua.jpg');
     background-repeat:repeat;
   }
   .form-signin {

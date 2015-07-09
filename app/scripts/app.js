@@ -9,6 +9,7 @@
  * Main module of the application.
  */
 
+
 var serverURL = 'http://localhost:1337/';
 
 
@@ -39,7 +40,7 @@ angular
   ])
 
   //Factoria para la obtención de data general para todas los controladores
-.factory('dataServices', function ($http) {
+.factory('dataServices', function ($http, $q) {
   return {
         //Retorna la lista de Managers registrados
         getManagers: function () {
@@ -58,9 +59,27 @@ angular
           return $http.get(serverURL + 'connection/'+val);
         },
           //Retorna la lista de Objects registrados
-          getObjects: function () {
+       getObjects: function () {
+       /*   return {
+              getAll: getAll
+          }
+
+        function getAll () {
+            var defered = $q.defer();
+            var promise = defered.promise;
+
+            $http.get(serverURL + 'objects')
+                .success(function(data) {
+                    defered.resolve(data);
+                })
+                .error(function(err) {
+                    defered.reject(err)
+                });
+
+            return promise;*/
+        }
             return $http.get(serverURL + 'objects');
-          },
+        },
         //Retorna un  Objeto
         getObjectById: function (val) {
           return $http.get(serverURL + 'objects/'+val);
@@ -74,9 +93,9 @@ angular
           return $http.get(serverURL + 'reportengines/'+val);
         } ,
            //Retorna la lista de Tipos de Reportes
-           getReportTypes: function () {
+        getReportTypes: function () {
             return $http.get(serverURL + 'reporttypes');
-          },
+        },
         //Retorna un Tipo de Reporte segun el ID
         getReportTypesById: function (val) {
           return $http.get(serverURL + 'reporttypes/'+val);
@@ -90,9 +109,9 @@ angular
           return $http.get(serverURL + 'objectsreports/'+val);
         },
            //Retorna la lista de Tipos de parametros de reportes
-           getReporstParams: function () {
+        getReporstParams: function () {
             return $http.get(serverURL + 'reportsparams');
-          },
+        },
         //Retorna un Tipo de parametros de reportes segun el ID
         getReportsParamsById: function (val) {
           return $http.get(serverURL + 'reportsparams/'+val);
@@ -108,8 +127,8 @@ angular
   .controller( 'AppCtrl', function AppCtrl ( $scope ) {
 
     $scope.user={};
-     $scope.showLogin=false; 
-    $scope.user.email='carlos@carlos.com';    
+     $scope.showLogin=true; 
+    $scope.user.email='clmg1010@gmail.com';    
     $scope.user.password='123456789'; 
 
 

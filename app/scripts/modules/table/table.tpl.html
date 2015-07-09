@@ -1,3 +1,14 @@
+   <div class="row">
+        <div id="bc1" class="btn-group btn-breadcrumb">
+            <a href="#" class="btn btn-default"><i class="fa fa-home"></i></a>
+            <a href="#" class="btn btn-default"><div>Home</div></a>
+            <a href="#" class="btn btn-default"><div>Conexiones</div></a>
+            <a href="#" class="btn btn-default"><div>Objetos - Consultas</div></a>
+            <a href="#" class="btn btn-default"><div>Config Data</div></a>
+            <a href="#" class="btn btn-default"><div><i class="fa fa-bar-chart"> </i> Ver Dashboard</div></a>
+        </div>
+  </div>
+
 <div class="row" ng-init="getObjects();">
 
   
@@ -18,8 +29,6 @@
       </div> 
   </div>
 </div>
-{{limit}}
-
   <div class="row">
 
     <div class="col-lg-12" >
@@ -51,12 +60,12 @@
 </div>
 </div>
 
-   <script type='text/ng-template' id='myModalContent.html'> 
+   <script type='text/ng-template' id='ListadoModal.html'> 
    
             <div class="modal-header panel-primary " ng-init="getObjects();predicate='name';">
               <h3 class="modal-title">Objetos</h3>
             </div>
-            <div class="modal-body ">
+            <div class="modal-body " style="max-height: 600px;overflow-y: scroll;">
             <div class="panel row" ng-show="loading">
             <button class="btn btn-lg col-xs-12 btn-info ">
                  <span class="fa fa-check"></span> Loading...
@@ -81,7 +90,7 @@
 
                     </tr>
                   </thead>
-                  <tbody style="max-height: 60px;overflow-y: scroll;">
+                  <tbody style="max-height: 600px;overflow-y: scroll;">
 
                    <tr  ng-repeat="row in objectList  |  filter:searchText | orderBy:predicate:reverse ">
                       <td> 
