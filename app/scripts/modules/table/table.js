@@ -1,6 +1,7 @@
 angular.module( 'app.table', [
   'ui.router',
   'ui.bootstrap',
+  'ngAnimate',
   'LocalStorageModule'
 ])
 .directive('pivot', ['localStorageService', function(localStorageService) {
@@ -270,10 +271,10 @@ angular.module( 'app.table', [
 
 
   $scope.openModalObjeto = function (size) {
-    size='lg';
+    
     var modalInstance = $modal.open({
-      animation: $scope.animationsEnabled,
-      templateUrl: 'myModalContent.html',
+      animation: false, // Necesito arreglar esto.
+      templateUrl: 'ListadoModal.html',
       controller: 'ModalObjects',
       size: size,
       resolve: {
@@ -284,8 +285,9 @@ angular.module( 'app.table', [
     });
 
     modalInstance.result.then(function (value) {
-     
+      console.log ('result:');
        console.log (value);
+       if (value=='cancel') return;
        $scope.form.objects_id = value.id;
        $scope.form.name = value.name;
        $scope.form.description = value.description;
@@ -315,7 +317,7 @@ angular.module( 'app.table', [
   };
 
   $scope.cancel = function () {
-    $modalInstance.dismiss('cancel');
+    $modalInstance.close('cancel');
   };
 
       //Lista de Objects
