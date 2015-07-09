@@ -7,7 +7,7 @@ table.pvtTable {
     border-collapse: collapse;
 }
 table.pvtTable tr th, table.pvtTable tr th {
-    background-color: #22CB79;
+    background-color: #6DE0D1;
     border: 2px solid #FFFFFF;
     font-size: 8pt;
     padding: 5px;
@@ -35,6 +35,7 @@ table.pvtTable tr td {
     background: #DFE7F2;
     padding: 5px;
     min-width: 20px;
+    max-width: auto;
     min-height: 20px;
 }
 .pvtAxisContainer li {

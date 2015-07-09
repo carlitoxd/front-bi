@@ -202,7 +202,8 @@ function getColumnChart(dataArray, metaData) {
 			type: 'column',
 			plotBackgroundColor: null,
             plotBorderWidth: null,
-            plotShadow: false
+            plotShadow: false,
+            zoomType:"xy"
 		},
 		colors: Highcharts.map(Highcharts.getOptions().colors, function(color) {
 		    return {
@@ -221,15 +222,13 @@ function getColumnChart(dataArray, metaData) {
 				text: xAxisTitle
 			},
 			categories: [],
-			labels:{
-				formatter: function(){
-					if (this.value.length > 10){
-						return this.value.substr(0,5) + '...';
-					}else{
-						 return this.value;   
-					}                        
-				}
-			}
+			labels: {
+                rotation: -45,
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
 		},
 		yAxis: {
 			title: {
