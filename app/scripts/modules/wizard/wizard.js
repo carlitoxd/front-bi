@@ -62,6 +62,10 @@ angular.module( 'app.wizard', [
 
  $scope.workflow=[];
 
+ $scope.isEmpty= function(obj) {
+    return Object.keys(obj).length === 0;
+};
+
  $scope.workflow.push({icon:null, iconNumber:1 ,name: 'Sources' ,activeClass:'badge label-success',inactiveClass:'badge label-default',isActive:false,route:'dashboard'});
  $scope.setSources= function(id) {
   console.log (id);
@@ -91,7 +95,7 @@ angular.module( 'app.wizard', [
  };
 
   $scope.setWork= function(wizard) {
-    $scope.workflow[2].isActive=true;
+
     console.log ("Enviado:"+wizard);
     $scope.slider=wizard;
     for (var i = 0; i <  $scope.workflow.length; i++) {
@@ -109,9 +113,11 @@ angular.module( 'app.wizard', [
 
  $scope.config={};
  $scope.config.Connections={};
+ $scope.config.Query={};
+ $scope.config.Config={};
 
   $scope.selectConnection= function(row) {
-      
+      // Nota se deben filtrar las consultas por id de conexion
       if($scope.config.Connections===undefined) {
         return;
       }
@@ -124,6 +130,26 @@ angular.module( 'app.wizard', [
 
        
   };
+
+
+
+  $scope.selectQuery= function(row) {
+      // Nota se deben filtrar las consultas por id de conexion
+      if($scope.config.Query===undefined) {
+        return;
+      }
+
+      if($scope.config.Query.id==row.id) {
+        $scope.config.Query={};
+      } else {
+         $scope.config.Query=row;
+      }
+
+       
+  };
+
+
+
 
 
   function submit(key, val) {
