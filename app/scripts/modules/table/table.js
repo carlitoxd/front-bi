@@ -43,7 +43,36 @@ angular.module( 'app.table', [
         }
     };
 }])
+.directive('myMetric', ['$rootScope', function($rootScope) {
+  return {
+    link: function(scope, element, attrs) {
+      $rootScope.$on('getKPIString', function(e, val) {
+        var domElement = element[0];
 
+        if (document.selection) {
+          domElement.focus();
+          var sel = document.selection.createRange();
+          sel.text = val;
+          domElement.focus();
+        } else if (domElement.selectionStart || domElement.selectionStart === 0) {
+          var startPos = domElement.selectionStart;
+          var endPos = domElement.selectionEnd;
+          var scrollTop = domElement.scrollTop;
+          domElement.value = domElement.value.substring(0, startPos) + val + domElement.value.substring(endPos, domElement.value.length);
+          domElement.focus();
+          domElement.selectionStart = startPos + val.length;
+          domElement.selectionEnd = startPos + val.length;
+          domElement.scrollTop = scrollTop;
+        } else {
+          domElement.value += val;
+          domElement.focus();
+        }
+        $rootScope.mathString=domElement.value;
+
+      });
+    }
+  }
+}])
 .config(function config( $stateProvider ) {
   $stateProvider.state( 'table', {
     url: '/table',
@@ -56,7 +85,7 @@ angular.module( 'app.table', [
     data:{ pageTitle: 'Tabla' }
   });
 })
-.controller( 'TableCtrl', function TableCtrl( $scope, $filter, dataServices,$http,$timeout, localStorageService,$modal, $log) {
+.controller( 'TableCtrl', function TableCtrl( $scope, $filter, dataServices,$http,$timeout, localStorageService,$modal, $log, $rootScope) {
   function submit(key, val) {
    return localStorageService.set(key, val);
   }
@@ -107,7 +136,37 @@ angular.module( 'app.table', [
     });
 
   };
+  $scope.metricString=[];
+   $scope.getKPIString = function (keyboard,value) {
+    if(keyboard===undefined) {
+      $scope.metricString.push(value);
+      $rootScope.$broadcast('getKPIString', value);
+    }
+    else {
+      alert(value.charCode);
+      if(value.charCode>=42 && value.charCode<=57) {
+        $scope.metricString.push(value.key);
+        $rootScope.$broadcast('getKPIString', value.key);
+      }
+      else {
+        return false;
+      }
+    }
+   };
 
+   $scope.getKPIMetric = function () {
+    alert($rootScope.mathString);
+    $http({
+      url: serverURL + 'objects/getKPIMetric?metric='+$rootScope.mathString,
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json; charset=UTF-8' }
+    }).success(function (data) {
+      alert("ok");
+
+    }).error(function (err) {
+
+    });
+   };
 
   $scope.getFields = function () {
 
@@ -122,6 +181,7 @@ angular.module( 'app.table', [
       // } 
      // console.log(data.data);
       $scope.dataTable=data.data;
+      $scope.dataFields=data.fields;
 
     }).error(function (err) {
 

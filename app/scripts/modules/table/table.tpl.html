@@ -81,16 +81,39 @@
               </div>
             </div>
             <br>
-            <h5 class="text-success"><i class="fa fa-calculator"></i> Cálculo de Indicador</h5>         
-            <button type="button" class="btn btn-default"><i class="fa fa-plus"></i></button>
-            <button type="button" class="btn btn-default"><i class="fa fa-minus"></i></button>
-            <button type="button" class="btn btn-default"><b>/</b></button>
-            <button type="button" class="btn btn-default"><i class="fa fa-asterisk"></i></button>
-            <button type="button" class="btn btn-default"><b>E</b></button>
-            <button type="button" class="btn btn-default"><i class="fa fa-superscript"></i></button>                  
-            <textarea class="form-control"></textarea>
+            <h5 class="text-success"><i class="fa fa-calculator"></i> Cálculo de Indicador</h5>
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'1')">1</button>
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'2')">2</button>
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'3')">3</button>
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'4')">4</button>
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'5')">5</button>
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'6')">6</button>
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'7')">7</button>
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'8')">8</button>
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'9')">9</button>
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'0')">0</button>
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'.')">.</button>      
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'+')"><i class="fa fa-plus"></i></button>
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'-')"><i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'/')"><b>/</b></button>
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'*')"><i class="fa fa-asterisk"></i></button>
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'SUM')"><b>E</b></button>
+            <button type="button" class="btn btn-default"><i class="fa fa-superscript"></i></button>
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'(')"><b>(</b></button>  
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,')')"><b>)</b></button>
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'[WHERE]')"><b>CONDICIÓN</b></button>
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'=')"><b>=</b></button>
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'!=')"><b>!=</b></button>
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'>')"><b>></b></button>
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'>=')"><b>>=</b></button>
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'<')"><b><</b></button>
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'<=')"><b><=</b></button>             
+            <textarea class="form-control" my-metric="" ng-keypress="getKPIString('keyboard',$event)"></textarea>
+            <div>
+              <button type="button" class="btn btn-primary btn-xs" ng-click="getKPIString(keyboard,field.title)" ng-repeat="field in dataFields">{{field.title}}</button>
+            </div>
             <br>
-            <button class="btn btn-success">Calcular</button>
+            <button class="btn btn-success" ng-click="getKPIMetric()">Calcular</button>
           </form>
         </div>
         <div id="doublescroll" class="table-responsive" pivot="dataTable" dataTable="dataTable"></div>
