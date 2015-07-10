@@ -34,20 +34,36 @@ angular.module( 'app.dashboard', [
         options: {
             chart: {
                 type:  $scope.typeChart[index]
-            }
+            },
+             exporting: {
+                enabled: false
+
+               },
+        },
+
+        exporting: {
+            enabled: false
+
         },
         series: [{
-            data: [Math.floor(Math.random() * 20) + 1, Math.floor(Math.random() * 20) + 1, Math.floor(Math.random() * 20) + 1, Math.floor(Math.random() * 20) + 1,Math.floor(Math.random() * 20) + 1]
+
+            data: [Math.floor(Math.random() * 20) + 1, Math.floor(Math.random() * 20) + 1, Math.floor(Math.random() * 20) + 1, Math.floor(Math.random() * 20) + 1,Math.floor(Math.random() * 20) + 1],
+            showInLegend: false
+          },{
+            data: [Math.floor(Math.random() * 20) + 1, Math.floor(Math.random() * 20) + 1, Math.floor(Math.random() * 20) + 1, Math.floor(Math.random() * 20) + 1, Math.floor(Math.random() * 20) + 1],
+            showInLegend: false
         },{
-            data: [Math.floor(Math.random() * 20) + 1, Math.floor(Math.random() * 20) + 1, Math.floor(Math.random() * 20) + 1, Math.floor(Math.random() * 20) + 1, Math.floor(Math.random() * 20) + 1]
-        },{
-            data: [Math.floor(Math.random() * 20) + 1, Math.floor(Math.random() * 20) + 1, Math.floor(Math.random() * 20) + 1, Math.floor(Math.random() * 20) + 1, Math.floor(Math.random() * 20) + 1]
+            data: [Math.floor(Math.random() * 20) + 1, Math.floor(Math.random() * 20) + 1, Math.floor(Math.random() * 20) + 1, Math.floor(Math.random() * 20) + 1, Math.floor(Math.random() * 20) + 1],
+            showInLegend: false
         }],
         title: {
             text: null
         },
+        credits: {
+            enabled: false
+        },
         size: {
-        height: 280
+        height: 140
         },
         loading: false
     };
