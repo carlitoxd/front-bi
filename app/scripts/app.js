@@ -36,7 +36,9 @@ angular
     'app.reportsParams',
     'app.reportObjects',
     'app.table',
-    'app.dashboard'
+    'app.dashboard',
+    'app.wizard'
+
   ])
 
   //Factoria para la obtención de data general para todas los controladores
