@@ -107,8 +107,9 @@
             <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'>')"><b>></b></button>
             <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'>=')"><b>>=</b></button>
             <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'<')"><b><</b></button>
-            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'<=')"><b><=</b></button>             
-            <textarea class="form-control" my-metric="" ng-keypress="getKPIString('keyboard',$event)"></textarea>
+            <button type="button" class="btn btn-default" ng-click="getKPIString(keyboard,'<=')"><b><=</b></button>
+            <my-metric my-metric-var="string" ng-keypress="getKPIString('keyboard',$event)"></my-metric>
+            {{string}}
             <div>
               <button type="button" class="btn btn-primary btn-xs" ng-click="getKPIString(keyboard,field.title)" ng-repeat="field in dataFields">{{field.title}}</button>
             </div>

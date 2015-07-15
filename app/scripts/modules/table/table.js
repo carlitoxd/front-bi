@@ -45,7 +45,13 @@ angular.module( 'app.table', [
 }])
 .directive('myMetric', ['$rootScope', function($rootScope) {
   return {
-    link: function(scope, element, attrs) {
+    restrict: 'AE',
+    scope: {
+      myMetricVar: '=',
+    },
+    template: '<textarea class="form-control" ng-model="myMetricVar">',
+    replace: true,
+    link: function($scope, element, attrs) {
       $rootScope.$on('getKPIString', function(e, val) {
         var domElement = element[0];
 
@@ -67,7 +73,8 @@ angular.module( 'app.table', [
           domElement.value += val;
           domElement.focus();
         }
-        $rootScope.mathString=domElement.value;
+        //$rootScope.mathString=domElement.value;
+        $rootScope.string=domElement.value;
 
       });
     }
@@ -140,24 +147,18 @@ angular.module( 'app.table', [
    $scope.getKPIString = function (keyboard,value) {
     if(keyboard===undefined) {
       $scope.metricString.push(value);
-      $rootScope.$broadcast('getKPIString', value);
+       $rootScope.$broadcast('getKPIString', value);
+       return true;
     }
     else {
-      alert(value.charCode);
-      if(value.charCode>=42 && value.charCode<=57) {
-        $scope.metricString.push(value.key);
-        $rootScope.$broadcast('getKPIString', value.key);
-      }
-      else {
-        return false;
-      }
+        return true;
     }
    };
 
    $scope.getKPIMetric = function () {
-    alert($rootScope.mathString);
+    $scope.string=$rootScope.string;
     $http({
-      url: serverURL + 'objects/getKPIMetric?metric='+$rootScope.mathString,
+      url: serverURL + 'objects/getKPIMetric?metric='+$scope.string,
       method: 'GET',
       headers: { 'Content-Type': 'application/json; charset=UTF-8' }
     }).success(function (data) {
