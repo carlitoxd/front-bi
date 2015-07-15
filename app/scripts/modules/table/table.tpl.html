@@ -13,19 +13,23 @@
   </div>
   <div class="col-lg-12">
     <div class="panel panel-info" >
-      <div class="panel-heading">
-        <div class="pull-left"><button class="btn btn-danger btn-sm" ng-click="loadFile()"><i class="fa fa-file-excel-o"></i></button>
-          <button ng-click="openModalObjeto('lg')" class="btn btn-success btn-sm" type="button"> <i class="fa fa-cube"></i></button>
-          <span><strong>{{form.name}}:</strong></span>{{form.description}}&nbsp;
+    <div class="panel-heading">
+      
+
+    <div class="btn-group pull-right">
+        <button class="btn btn-danger btn-sm" ng-click="loadFile()"><i class="fa fa-file-excel-o"></i></button>
+        <button ng-click="openModalObjeto('lg')" class="btn btn-success btn-sm" type="button"> <i class="fa fa-cube"></i></button>
+        <button class="btn btn-warning btn-sm" ng-init="kpi=false" ng-click="kpi=!kpi"><i class="fa fa-tachometer"></i></button>
           <select ng-model="limit" ng-init="limit.value=100" ng-options="limit.value for limit in  arrayLimit" ng-change="getFields()">
            <option value="">Limit
            </option>
-         </select>      
-       </div>
-       <div class="pull-right">
-         <button class="btn btn-warning btn-sm" ng-init="kpi=false" ng-click="kpi=!kpi"><i class="fa fa-tachometer"></i></button>
-       </div>    
-     </div>
+         </select>    
+    </div>
+
+
+    <h4>  <span><strong>{{form.name}}:</strong></span>{{form.description}} </h4>
+   </div>
+  
      <div class="panel-body">
       <div class='content'>
         <div ng-hide="!kpi">
