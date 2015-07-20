@@ -1,5 +1,2 @@
-# Front End for Business Intelligence Suite 
-
-todo:
-
-this readme..
+# Front End for Business Intelligence Suite  (OPEN SOURCE)
+ 
